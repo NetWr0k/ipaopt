@@ -9,7 +9,7 @@ unnecessary CPU architecture slices, to reduce final IPA size.
 
 Xcode compiles `.xcassets` source folders into a binary `Assets.car` archive
 at build time. There is no supported way to selectively delete entries from
-an already-compiled `Assets.car` — Apple's own tooling (`actool`) only
+an already compiled `Assets.car` Apple's own tooling (`actool`) only
 rebuilds it wholesale from the original `.xcassets` source. Because of that,
 `ipaopt` works in two complementary modes:
 
@@ -20,13 +20,13 @@ rebuilds it wholesale from the original `.xcassets` source. Because of that,
    what's inside any `Assets.car` files found (via `assetutil`, macOS-only)
    so you know what a source-level rebuild would remove.
 
-2. **`ipaopt catalog-filter`** — operates on your project's `.xcassets`
+2. **`ipaopt catalog-filter`** operates on your project's `.xcassets`
    *source* folder (before compilation). It removes entries matching your
    idiom/scale/appearance rules and rewrites `Contents.json` accordingly,
    and can optionally recompile the result into a new `Assets.car` via
    `actool` (requires macOS + Xcode). This is the right tool when you have
    access to the source project and want the compiled catalog itself
-   reduced — plug it into your build phase before `actool` normally runs,
+   reduced  plug it into your build phase before `actool` normally runs,
    or use it standalone and swap in the generated `Assets.car`.
 
 `lipo` and `actool`/`assetutil` are macOS/Xcode-only tools with no portable
