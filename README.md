@@ -13,7 +13,7 @@ an already compiled `Assets.car` Apple's own tooling (`actool`) only
 rebuilds it wholesale from the original `.xcassets` source. Because of that,
 `ipaopt` works in two complementary modes:
 
-1. **`ipaopt strip`** / **`ipaopt report`** — operate directly on a built
+1. **`ipaopt strip`** / **`ipaopt report`** operate directly on a built
    `.ipa`. They strip *loose* (non-catalog) image resources that follow
    Apple's `name@2x~ipad.png` naming convention, thin Mach-O binaries down to
    the architectures you want to keep (via `lipo`), and print a report of
